@@ -1,120 +1,198 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FBUZS | Портфолио</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body { background: #0f172a; color: #e2e8f0; line-height: 1.6; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Создание сайтов и Telegram-ботов</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        header { background: #1e293b; padding: 20px 8%; display: flex; justify-content: space-between; align-items: center; position: fixed; width: 100%; top: 0; z-index: 100; }
-        .logo { font-size: 22px; font-weight: bold; color: #38bdf8; }
-        nav a { color: #e2e8f0; text-decoration: none; margin-left: 20px; font-size: 14px; }
-        nav a:hover { color: #38bdf8; }
+  body {
+    background: #0a0a0a;
+    color: #e0e0e0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
 
-        .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 80px 20px 0; background: linear-gradient(135deg, #0f172a, #1e3a5f); }
-        .hero h1 { font-size: 40px; margin-bottom: 15px; }
-        .hero h1 span { color: #38bdf8; }
-        .hero p { font-size: 18px; color: #94a3b8; max-width: 600px; }
-        .btn { margin-top: 30px; background: #38bdf8; color: #0f172a; padding: 14px 40px; border-radius: 30px; text-decoration: none; font-weight: bold; transition: 0.3s; }
-        .btn:hover { background: #0ea5e9; }
+  /* Неоновая сетка на фоне */
+  .grid-bg {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image:
+      linear-gradient(rgba(0,255,170,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,255,170,0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: -1;
+  }
 
-        section { padding: 80px 8%; }
-        h2 { font-size: 32px; text-align: center; margin-bottom: 50px; color: #38bdf8; }
+  .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
 
-        .skills { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
-        .skill { background: #1e293b; padding: 15px 30px; border-radius: 10px; border: 1px solid #334155; }
+  /* Шапка */
+  header {
+    text-align: center;
+    padding: 80px 20px 50px;
+  }
 
-        .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; }
-        .project { background: #1e293b; border-radius: 15px; border: 1px solid #334155; }
-        .project-body { padding: 20px; }
-        .project h3 { margin-bottom: 10px; }
-        .project p { color: #94a3b8; font-size: 14px; margin-bottom: 15px; }
-        .project a { color: #38bdf8; text-decoration: none; font-weight: bold; }
+  h1 {
+    font-size: 2.8em;
+    color: #fff;
+    text-shadow:
+      0 0 10px #00ffaa,
+      0 0 30px #00ffaa,
+      0 0 60px #00ffaa;
+    margin-bottom: 15px;
+  }
 
-        .contact-box { background: #1e293b; border: 1px solid #334155; border-radius: 15px; padding: 40px 20px; text-align: center; max-width: 500px; margin: 0 auto; }
-        .tg-btn { display: inline-block; margin-top: 20px; background: #38bdf8; color: #0f172a; padding: 14px 50px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 18px; }
+  .subtitle {
+    font-size: 1.3em;
+    color: #00ffaa;
+    text-shadow: 0 0 15px #00ffaa;
+  }
 
-        footer { text-align: center; padding: 30px; background: #1e293b; color: #64748b; font-size: 14px; }
+  /* Неоновые кнопки */
+  .btn {
+    display: inline-block;
+    margin: 15px 10px 0;
+    padding: 15px 35px;
+    border: 2px solid #00ffaa;
+    color: #00ffaa;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: all 0.3s;
+    text-shadow: 0 0 10px #00ffaa;
+    box-shadow: 0 0 15px rgba(0,255,170,0.3), inset 0 0 10px rgba(0,255,170,0.1);
+  }
 
-        @media (max-width: 600px) {
-            .hero h1 { font-size: 30px; }
-            header { flex-direction: column; gap: 8px; }
-            nav a { margin: 0 8px; }
-        }
-    </style>
+  .btn:hover {
+    background: #00ffaa;
+    color: #0a0a0a;
+    text-shadow: none;
+    box-shadow: 0 0 30px #00ffaa, 0 0 60px rgba(0,255,170,0.5);
+  }
+
+  .btn.purple { border-color: #b026ff; color: #b026ff; text-shadow: 0 0 10px #b026ff; box-shadow: 0 0 15px rgba(176,38,255,0.3); }
+  .btn.purple:hover { background: #b026ff; color: #0a0a0a; text-shadow: none; box-shadow: 0 0 30px #b026ff; }
+
+  /* Секции */
+  section {
+    padding: 50px 20px;
+    border-top: 1px solid rgba(0,255,170,0.2);
+  }
+
+  h2 {
+    font-size: 2em;
+    color: #fff;
+    text-shadow: 0 0 15px #00ffaa;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  /* Карточки услуг */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+  }
+
+  .card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(0,255,170,0.4);
+    border-radius: 15px;
+    padding: 30px 25px;
+    transition: all 0.3s;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px rgba(0,255,170,0.4);
+    border-color: #00ffaa;
+  }
+
+  .card h3 {
+    color: #00ffaa;
+    text-shadow: 0 0 10px #00ffaa;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+  }
+
+  .price {
+    font-size: 1.4em;
+    color: #fff;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  .desc { color: #aaa; font-size: 0.95em; margin-top: 5px; }
+
+  /* Преимущества */
+  .features { text-align: center; }
+  .feature {
+    display: inline-block;
+    margin: 10px 15px;
+    padding: 12px 25px;
+    border: 1px solid #b026ff;
+    border-radius: 30px;
+    color: #b026ff;
+    text-shadow: 0 0 10px #b026ff;
+    box-shadow: 0 0 10px rgba(176,38,255,0.2);
+  }
+
+  /* Скидка */
+  .discount {
+    text-align: center;
+    font-size: 1.5em;
+    color: #ff2079;
+    text-shadow: 0 0 20px #ff2079;
+    padding: 30px;
+  }
+
+  footer {
+    text-align: center;
+    padding: 40px 20px;
+    border-top: 1px solid rgba(0,255,170,0.2);
+    color: #888;
+  }
+
+  footer a { color: #00ffaa; text-decoration: none; text-shadow: 0 0 10px #00ffaa; }
+
+  @media (max-width: 600px) {
+    h1 { font-size: 2em; }
+    .subtitle { font-size: 1em; }
+  }
+</style>
 </head>
 <body>
 
+<div class="grid-bg"></div>
+
 <header>
-    <div class="logo">FBUZS</div>
-    <nav>
-        <a href="#skills">Навыки</a>
-        <a href="#projects">Проекты</a>
-        <a href="#contacts">Контакты</a>
-    </nav>
+  <h1>⚡ Создаю сайты и Telegram-ботов ⚡</h1>
+  <p class="subtitle">Современно. Быстро. Недорого.</p>
+  <a href="https://t.me/fbuzs_web_bot" class="btn">🤖 Мой Telegram-бот</a>
+  <a href="https://t.me/fbuzs" class="btn purple">💬 Написать мне</a>
 </header>
 
-<section class="hero">
-    <h1>Привет, я <span>FBUZS</span> 👋</h1>
-    <p>Веб-разработчик | Вёрстка сайтов | Telegram-боты</p>
-    <p style="margin-top: 15px; font-size: 15px;">Создаю современные адаптивные сайты быстро и недорого</p>
-    <a href="#projects" class="btn">Смотреть работы</a>
-</section>
-
-<section id="skills">
-    <h2>Мои навыки</h2>
-    <div class="skills">
-        <div class="skill">💻 HTML / CSS</div>
-        <div class="skill">⚙️ JavaScript</div>
-        <div class="skill">🐍 Python</div>
-        <div class="skill">🤖 Telegram-боты</div>
-        <div class="skill">📱 Адаптивная вёрстка</div>
+<section>
+  <h2>💼 Услуги и цены</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>🖥 Сайт-визитка</h3>
+      <p class="desc">1 страница, готово за 3–5 дней</p>
+      <p class="price">5 000 – 8 000 ₽</p>
     </div>
-</section>
-
-<section id="projects">
-    <h2>Мои проекты</h2>
-    <div class="projects">
-        <div class="project">
-            <div class="project-body">
-                <h3>🌐 Сайт-портфолио</h3>
-                <p>Этот сайт — написал с нуля на чистом HTML и CSS, полностью адаптивный</p>
-                <a href="https://github.com/fbuzs" target="_blank">Смотреть код →</a>
-            </div>
-        </div>
-        <div class="project">
-            <div class="project-body">
-                <h3>🤖 Telegram-бот (в разработке)</h3>
-                <p>Бот на Python с меню, кнопками и автоматизацией задач</p>
-                <a href="https://t.me/fbuzs" target="_blank">Запросить демо →</a>
-            </div>
-        </div>
-        <div class="project">
-            <div class="project-body">
-                <h3>💻 Лендинг под заказ</h3>
-                <p>Сделаю продающий одностраничный сайт для твоего бизнеса за 2–3 дня</p>
-                <a href="https://t.me/fbuzs" target="_blank">Заказать →</a>
-            </div>
-        </div>
+    <div class="card">
+      <h3>🚀 Лендинг</h3>
+      <p class="desc">Продающая страница, 5–7 дней</p>
+      <p class="price">8 000 – 15 000 ₽</p>
     </div>
-</section>
-
-<section id="contacts">
-    <h2>Связаться со мной</h2>
-    <div class="contact-box">
-        <p>Открыт к заказам и сотрудничеству 🚀</p>
-        <p style="margin-top: 10px; color: #94a3b8;">Ответляю в течение часа</p>
-        <a href="https://t.me/fbuzs" class="tg-btn">✈️ Написать в Telegram</a>
+    <div class="card">
+      <h3>🏢 Сайт компании</h3>
+      <p class="desc">3–5 страниц, 7–10 дней</p>
+      <p class="price">15 000 – 25 000 ₽</p>
     </div>
-</section>
-
-<footer>
-    © 2025 FBUZS | Сделано с ❤️ и чистым кодом
-
-
-</footer>
-
-</body>
-</html>
+    <div class="card">
+      <h3>🛒 Интернет-магазин</h3>
+      <p class="desc">Каталог,
