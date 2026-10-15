@@ -15,18 +15,7 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { background: var(--bg); color: var(--text); font-family: 'Space Grotesk', sans-serif; line-height: 1.7; }
   .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
-  .lang-switch {
-    position: fixed; top: 20px; right: 24px; z-index: 10;
-    display: flex; gap: 4px; background: var(--card);
-    border: 1px solid var(--border); border-radius: 10px; padding: 4px;
-  }
-  .lang-switch button {
-    background: transparent; border: none; color: var(--muted);
-    font-family: inherit; font-size: 13px; padding: 6px 12px;
-    border-radius: 7px; cursor: pointer; transition: 0.2s;
-  }
-  .lang-switch button.active { background: var(--accent); color: #0b0d0f; font-weight: 600; }
-  header { padding: 110px 0 70px; }
+  header { padding: 90px 0 60px; }
   .tag {
     display: inline-block; font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
     color: var(--accent); border: 1px solid var(--border); padding: 6px 14px;
@@ -68,124 +57,53 @@
 </head>
 <body>
 
-<div class="lang-switch">
-  <button id="btn-ru" class="active" onclick="setLang('ru')">RU</button>
-  <button id="btn-en" onclick="setLang('en')">EN</button>
-</div>
-
 <div class="container">
 
 <header>
-  <span class="tag" id="t-tag"></span>
-  <h1 id="t-h1"></h1>
-  <p class="subtitle" id="t-subtitle"></p>
-  <a href="https://t.me/fbuzs_web_bot" class="btn btn-primary" id="t-btn_bot"></a>
-  <a href="https://t.me/fbuzs" class="btn btn-ghost" id="t-btn_me"></a>
+  <span class="tag">Веб-разработка</span>
+  <h1>Создаю сайты и <span>Telegram-ботов</span>, которые приносят клиентов</h1>
+  <p class="subtitle">Современный дизайн, быстрые сроки и честные цены. От идеи до запуска — за неделю.</p>
+  <a href="https://t.me/fbuzs_web_bot" class="btn btn-primary">🤖 Заказать через бота</a>
+  <a href="https://t.me/fbuzs" class="btn btn-ghost">💬 Написать напрямую</a>
 </header>
 
 <section>
-  <h2 id="t-services_h"></h2>
+  <h2>Услуги и цены</h2>
   <div class="cards">
-    <div class="card"><h3 id="t-s1t"></h3><p class="desc" id="t-s1d"></p><p class="price">5 000 – 8 000 ₽</p></div>
-    <div class="card"><h3 id="t-s2t"></h3><p class="desc" id="t-s2d"></p><p class="price">8 000 – 15 000 ₽</p></div>
-    <div class="card"><h3 id="t-s3t"></h3><p class="desc" id="t-s3d"></p><p class="price">15 000 – 25 000 ₽</p></div>
-    <div class="card"><h3 id="t-s4t"></h3><p class="desc" id="t-s4d"></p><p class="price">от 30 000 ₽</p></div>
-    <div class="card"><h3 id="t-s5t"></h3><p class="desc" id="t-s5d"></p><p class="price">3 000 – 10 000 ₽</p></div>
-    <div class="card"><h3 id="t-s6t"></h3><p class="desc" id="t-s6d"></p><p class="price">1 500 – 3 000 ₽</p></div>
-    <div class="card"><h3 id="t-s7t"></h3><p class="desc" id="t-s7d"></p><p class="price">2 000 – 3 000 ₽/мес</p></div>
+    <div class="card"><h3>🖥 Сайт-визитка</h3><p class="desc">1 страница, готово за 3–5 дней</p><p class="price">5 000 – 8 000 ₽</p></div>
+    <div class="card"><h3>🚀 Лендинг</h3><p class="desc">Продающая страница, 5–7 дней</p><p class="price">8 000 – 15 000 ₽</p></div>
+    <div class="card"><h3>🏢 Сайт компании</h3><p class="desc">3–5 страниц, 7–10 дней</p><p class="price">15 000 – 25 000 ₽</p></div>
+    <div class="card"><h3>🛒 Интернет-магазин</h3><p class="desc">Каталог, корзина, оплата</p><p class="price">от 30 000 ₽</p></div>
+    <div class="card"><h3>🤖 Telegram-бот</h3><p class="desc">Запись клиентов, заявки, меню — под ключ</p><p class="price">3 000 – 10 000 ₽</p></div>
+    <div class="card"><h3>🔧 Доработка сайта</h3><p class="desc">Правки на существующем сайте</p><p class="price">1 500 – 3 000 ₽</p></div>
+    <div class="card"><h3>📱 Поддержка сайтов</h3><p class="desc">Правки и обновления каждый месяц</p><p class="price">2 000 – 3 000 ₽/мес</p></div>
   </div>
 </section>
 
 <section>
-  <h2 id="t-why_h"></h2>
+  <h2>Почему я</h2>
   <div class="features">
-    <div class="feature"><b id="t-f1t"></b><span id="t-f1d"></span></div>
-    <div class="feature"><b id="t-f2t"></b><span id="t-f2d"></span></div>
-    <div class="feature"><b id="t-f3t"></b><span id="t-f3d"></span></div>
-    <div class="feature"><b id="t-f4t"></b><span id="t-f4d"></span></div>
+    <div class="feature"><b>🚀 Быстрые сроки</b><span>Сайт готов за 3–7 дней, а не за месяц</span></div>
+    <div class="feature"><b>💰 Честные цены</b><span>Фиксированная цена до начала работы</span></div>
+    <div class="feature"><b>📱 Адаптивность</b><span>Идеально выглядит на телефоне и ПК</span></div>
+    <div class="feature"><b>🤝 Поддержка</b><span>Помогаю и после сдачи проекта</span></div>
   </div>
 </section>
 
 <section>
   <div class="banner">
-    <p id="t-disc"></p>
-    <a href="https://t.me/fbuzs_web_bot" class="btn btn-primary" id="t-btn_bot2"></a>
-    <a href="https://t.me/fbuzs" class="btn btn-ghost" id="t-btn_me2"></a>
+    <p>🔥 Первым клиентам — скидка 30% 🔥</p>
+    <a href="https://t.me/fbuzs_web_bot" class="btn btn-primary">🤖 Заказать через бота</a>
+    <a href="https://t.me/fbuzs" class="btn btn-ghost">💬 Обсудить проект</a>
   </div>
 </section>
 
 <footer>
-  <p id="t-footer"></p>
-  <p style="margin-top:8px;">© 2025 — <span id="t-copy"></span></p>
+  <p>Связь: <a href="https://t.me/fbuzs">@fbuzs</a> · Бот: <a href="https://t.me/fbuzs_web_bot">@fbuzs_web_bot</a></p>
+  <p style="margin-top:8px;">© 2025 — Создание сайтов и ботов</p>
 </footer>
 
 </div>
 
-<script>
-const T = {
-  ru: {
-    tag: "Веб-разработка",
-    h1: 'Создаю сайты и <span>Telegram-ботов</span>, которые приносят клиентов',
-    subtitle: "Современный дизайн, быстрые сроки и честные цены. От идеи до запуска — за неделю.",
-    btn_bot: "🤖 Заказать через бота", btn_me: "💬 Написать напрямую",
-    services_h: "Услуги и цены",
-    s1t: "🖥 Сайт-визитка", s1d: "1 страница, готово за 3–5 дней",
-    s2t: "🚀 Лендинг", s2d: "Продающая страница, 5–7 дней",
-    s3t: "🏢 Сайт компании", s3d: "3–5 страниц, 7–10 дней",
-    s4t: "🛒 Интернет-магазин", s4d: "Каталог, корзина, оплата",
-    s5t: "🤖 Telegram-бот", s5d: "Запись клиентов, заявки, меню — под ключ",
-    s6t: "🔧 Доработка сайта", s6d: "Правки на существующем сайте",
-    s7t: "📱 Поддержка сайтов", s7d: "Правки и обновления каждый месяц",
-    why_h: "Почему я",
-    f1t: "🚀 Быстрые сроки", f1d: "Сайт готов за 3–7 дней, а не за месяц",
-    f2t: "💰 Честные цены", f2d: "Фиксированная цена до начала работы",
-    f3t: "📱 Адаптивность", f3d: "Идеально выглядит на телефоне и ПК",
-    f4t: "🤝 Поддержка", f4d: "Помогаю и после сдачи проекта",
-    disc: "🔥 Первым клиентам — скидка 30% 🔥",
-    btn_bot2: "🤖 Заказать через бота", btn_me2: "💬 Обсудить проект",
-    footer: 'Связь: <a href="https://t.me/fbuzs">@fbuzs</a> · Бот: <a href="https://t.me/fbuzs_web_bot">@fbuzs_web_bot</a>',
-    copy: "Создание сайтов и ботов"
-  },
-  en: {
-    tag: "Web development",
-    h1: 'I build websites and <span>Telegram bots</span> that bring you clients',
-    subtitle: "Modern design, fast turnaround and honest pricing. From idea to launch — in one week.",
-    btn_bot: "🤖 Order via bot", btn_me: "💬 Message me directly",
-    services_h: "Services & Pricing",
-    s1t: "🖥 Business card site", s1d: "1 page, ready in 3–5 days",
-    s2t: "🚀 Landing page", s2d: "High-converting page, 5–7 days",
-    s3t: "🏢 Company website", s3d: "3–5 pages, 7–10 days",
-    s4t: "🛒 Online store", s4d: "Catalog, cart, payments",
-    s5t: "🤖 Telegram bot", s5d: "Bookings, orders, menus — turnkey",
-    s6t: "🔧 Website fixes", s6d: "Edits on your existing site",
-    s7t: "📱 Website maintenance", s7d: "Updates and edits every month",
-    why_h: "Why me",
-    f1t: "🚀 Fast delivery", f1d: "Your site is ready in 3–7 days, not a month",
-    f2t: "💰 Honest pricing", f2d: "Fixed price agreed before we start",
-    f3t: "📱 Fully responsive", f3d: "Looks perfect on phones and desktops",
-    f4t: "🤝 Support", f4d: "I help even after the project is done",
-    disc: "🔥 30% OFF for my first clients 🔥",
-    btn_bot2: "🤖 Order via bot", btn_me2: "💬 Discuss a project",
-    footer: 'Contact: <a href="https://t.me/fbuzs">@fbuzs</a> · Bot: <a href="https://t.me/fbuzs_web_bot">@fbuzs_web_bot</a>',
-    copy: "Websites & bots development"
-  }
-};
-
-function setLang(lang) {
-  document.documentElement.lang = lang;
-  document.getElementById('btn-ru').classList.toggle('active', lang === 'ru');
-  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-  const dict = T[lang];
-  for (const key in dict) {
-    const el = document.getElementById('t-' + key);
-    if (el) el.innerHTML = dict[key];
-  }
-}
-
-setLang('ru');
-</script>
-
 </body>
 </html>
-
-
