@@ -3,130 +3,65 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Websites & Telegram Bots | Сайты и Telegram-боты</title>
+<title>Websites & Telegram Bots</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0b0d0f;
-    --card: #121518;
-    --border: #1f262b;
-    --accent: #2ee6a8;
-    --accent2: #8b7bff;
-    --text: #e8eaed;
-    --muted: #9aa3ab;
+    --bg: #0b0d0f; --card: #121518; --border: #1f262b;
+    --accent: #2ee6a8; --accent2: #8b7bff;
+    --text: #e8eaed; --muted: #9aa3ab;
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Space Grotesk', sans-serif;
-    line-height: 1.7;
-  }
-
+  body { background: var(--bg); color: var(--text); font-family: 'Space Grotesk', sans-serif; line-height: 1.7; }
   .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
-
-  /* Язык */
   .lang-switch {
-    position: fixed;
-    top: 20px; right: 24px;
-    z-index: 10;
-    display: flex;
-    gap: 4px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 4px;
+    position: fixed; top: 20px; right: 24px; z-index: 10;
+    display: flex; gap: 4px; background: var(--card);
+    border: 1px solid var(--border); border-radius: 10px; padding: 4px;
   }
   .lang-switch button {
-    background: transparent;
-    border: none;
-    color: var(--muted);
-    font-family: inherit;
-    font-size: 13px;
-    padding: 6px 12px;
-    border-radius: 7px;
-    cursor: pointer;
-    transition: 0.2s;
+    background: transparent; border: none; color: var(--muted);
+    font-family: inherit; font-size: 13px; padding: 6px 12px;
+    border-radius: 7px; cursor: pointer; transition: 0.2s;
   }
-  .lang-switch button.active {
-    background: var(--accent);
-    color: #0b0d0f;
-    font-weight: 600;
-  }
-
-  header { padding: 110px 0 70px; text-align: left; }
+  .lang-switch button.active { background: var(--accent); color: #0b0d0f; font-weight: 600; }
+  header { padding: 110px 0 70px; }
   .tag {
-    display: inline-block;
-    font-size: 13px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--accent);
-    border: 1px solid var(--border);
-    padding: 6px 14px;
-    border-radius: 100px;
-    margin-bottom: 24px;
+    display: inline-block; font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--accent); border: 1px solid var(--border); padding: 6px 14px;
+    border-radius: 100px; margin-bottom: 24px;
   }
-  h1 {
-    font-size: clamp(2.2em, 6vw, 3.4em);
-    font-weight: 700;
-    line-height: 1.15;
-    letter-spacing: -0.02em;
-    margin-bottom: 18px;
-  }
+  h1 { font-size: clamp(2.2em, 6vw, 3.4em); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 18px; }
   h1 span { color: var(--accent); }
   .subtitle { color: var(--muted); font-size: 1.15em; max-width: 520px; margin-bottom: 32px; }
-
   .btn {
-    display: inline-block;
-    padding: 14px 32px;
-    border-radius: 12px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1em;
-    transition: 0.2s;
-    margin-right: 12px;
-    margin-bottom: 12px;
+    display: inline-block; padding: 14px 32px; border-radius: 12px;
+    text-decoration: none; font-weight: 600; transition: 0.2s;
+    margin-right: 12px; margin-bottom: 12px;
   }
   .btn-primary { background: var(--accent); color: #0b0d0f; }
   .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(46,230,168,0.25); }
   .btn-ghost { border: 1px solid var(--border); color: var(--text); }
   .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
-
   section { padding: 70px 0; border-top: 1px solid var(--border); }
-  h2 { font-size: 1.9em; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 36px; }
+  h2 { font-size: 1.9em; font-weight: 600; margin-bottom: 36px; }
   h2::before { content: "— "; color: var(--accent); }
-
   .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
-  .card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 28px;
-    transition: 0.2s;
-  }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 28px; transition: 0.2s; }
   .card:hover { border-color: var(--accent); transform: translateY(-3px); }
   .card h3 { font-size: 1.1em; font-weight: 600; margin-bottom: 8px; }
   .desc { color: var(--muted); font-size: 0.92em; }
   .price { margin-top: 16px; font-size: 1.25em; font-weight: 700; color: var(--accent); }
-
   .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
   .feature { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 22px; }
   .feature b { color: var(--accent2); display: block; margin-bottom: 6px; }
   .feature span { color: var(--muted); font-size: 0.92em; }
-
   .banner {
     background: linear-gradient(135deg, rgba(46,230,168,0.08), rgba(139,123,255,0.08));
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 48px;
-    text-align: center;
+    border: 1px solid var(--border); border-radius: 20px; padding: 48px; text-align: center;
   }
   .banner p { font-size: 1.4em; font-weight: 600; margin-bottom: 24px; }
-  .banner p b { color: var(--accent); }
-
   footer { padding: 50px 0; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.95em; }
   footer a { color: var(--accent); text-decoration: none; }
 </style>
@@ -141,47 +76,47 @@
 <div class="container">
 
 <header>
-  <span class="tag" data-i18n="tag">Web development</span>
-  <h1 data-i18n="h1">Создаю сайты и <span>Telegram-ботов</span>, которые приносят клиентов</h1>
-  <p class="subtitle" data-i18n="subtitle">Современный дизайн, быстрые сроки и честные цены. От идеи до запуска — за неделю.</p>
-  <a href="https://t.me/fbuzs_web_bot" class="btn btn-primary" data-i18n="btn_bot">🤖 Заказать через бота</a>
-  <a href="https://t.me/fbuzs" class="btn btn-ghost" data-i18n="btn_me">💬 Написать напрямую</a>
+  <span class="tag" id="t-tag"></span>
+  <h1 id="t-h1"></h1>
+  <p class="subtitle" id="t-subtitle"></p>
+  <a href="https://t.me/fbuzs_web_bot" class="btn btn-primary" id="t-btn_bot"></a>
+  <a href="https://t.me/fbuzs" class="btn btn-ghost" id="t-btn_me"></a>
 </header>
 
 <section>
-  <h2 data-i18n="services_h">Услуги и цены</h2>
+  <h2 id="t-services_h"></h2>
   <div class="cards">
-    <div class="card"><h3 data-i18n="s1t">🖥 Сайт-визитка</h3><p class="desc" data-i18n="s1d">1 страница, готово за 3–5 дней</p><p class="price">5 000 – 8 000 ₽</p></div>
-    <div class="card"><h3 data-i18n="s2t">🚀 Лендинг</h3><p class="desc" data-i18n="s2d">Продающая страница, 5–7 дней</p><p class="price">8 000 – 15 000 ₽</p></div>
-    <div class="card"><h3 data-i18n="s3t">🏢 Сайт компании</h3><p class="desc" data-i18n="s3d">3–5 страниц, 7–10 дней</p><p class="price">15 000 – 25 000 ₽</p></div>
-    <div class="card"><h3 data-i18n="s4t">🛒 Интернет-магазин</h3><p class="desc" data-i18n="s4d">Каталог, корзина, оплата</p><p class="price">от 30 000 ₽</p></div>
-    <div class="card"><h3 data-i18n="s5t">🤖 Telegram-бот</h3><p class="desc" data-i18n="s5d">Запись клиентов, заявки, меню — под ключ</p><p class="price">3 000 – 10 000 ₽</p></div>
-    <div class="card"><h3 data-i18n="s6t">🔧 Доработка сайта</h3><p class="desc" data-i18n="s6d">Правки на существующем сайте</p><p class="price">1 500 – 3 000 ₽</p></div>
-    <div class="card"><h3 data-i18n="s7t">📱 Поддержка сайтов</h3><p class="desc" data-i18n="s7d">Правки и обновления каждый месяц</p><p class="price">2 000 – 3 000 ₽/мес</p></div>
+    <div class="card"><h3 id="t-s1t"></h3><p class="desc" id="t-s1d"></p><p class="price">5 000 – 8 000 ₽</p></div>
+    <div class="card"><h3 id="t-s2t"></h3><p class="desc" id="t-s2d"></p><p class="price">8 000 – 15 000 ₽</p></div>
+    <div class="card"><h3 id="t-s3t"></h3><p class="desc" id="t-s3d"></p><p class="price">15 000 – 25 000 ₽</p></div>
+    <div class="card"><h3 id="t-s4t"></h3><p class="desc" id="t-s4d"></p><p class="price">от 30 000 ₽</p></div>
+    <div class="card"><h3 id="t-s5t"></h3><p class="desc" id="t-s5d"></p><p class="price">3 000 – 10 000 ₽</p></div>
+    <div class="card"><h3 id="t-s6t"></h3><p class="desc" id="t-s6d"></p><p class="price">1 500 – 3 000 ₽</p></div>
+    <div class="card"><h3 id="t-s7t"></h3><p class="desc" id="t-s7d"></p><p class="price">2 000 – 3 000 ₽/мес</p></div>
   </div>
 </section>
 
 <section>
-  <h2 data-i18n="why_h">Почему я</h2>
+  <h2 id="t-why_h"></h2>
   <div class="features">
-    <div class="feature"><b data-i18n="f1t">🚀 Быстрые сроки</b><span data-i18n="f1d">Сайт готов за 3–7 дней, а не за месяц</span></div>
-    <div class="feature"><b data-i18n="f2t">💰 Честные цены</b><span data-i18n="f2d">Фиксированная цена до начала работы</span></div>
-    <div class="feature"><b data-i18n="f3t">📱 Адаптивность</b><span data-i18n="f3d">Идеально выглядит на телефоне и ПК</span></div>
-    <div class="feature"><b data-i18n="f4t">🤝 Поддержка</b><span data-i18n="f4d">Помогаю и после сдачи проекта</span></div>
+    <div class="feature"><b id="t-f1t"></b><span id="t-f1d"></span></div>
+    <div class="feature"><b id="t-f2t"></b><span id="t-f2d"></span></div>
+    <div class="feature"><b id="t-f3t"></b><span id="t-f3d"></span></div>
+    <div class="feature"><b id="t-f4t"></b><span id="t-f4d"></span></div>
   </div>
 </section>
 
 <section>
   <div class="banner">
-    <p data-i18n="disc">🔥 Первым клиентам — скидка 30% 🔥</p>
-    <a href="https://t.me/fbuzs_web_bot" class="btn btn-primary" data-i18n="btn_bot2">🤖 Заказать через бота</a>
-    <a href="https://t.me/fbuzs" class="btn btn-ghost" data-i18n="btn_me2">💬 Обсудить проект</a>
+    <p id="t-disc"></p>
+    <a href="https://t.me/fbuzs_web_bot" class="btn btn-primary" id="t-btn_bot2"></a>
+    <a href="https://t.me/fbuzs" class="btn btn-ghost" id="t-btn_me2"></a>
   </div>
 </section>
 
 <footer>
-  <p data-i18n="footer">Связь: <a href="https://t.me/fbuzs">@fbuzs</a> · Бот: <a href="https://t.me/fbuzs_web_bot">@fbuzs_web_bot</a></p>
-  <p style="margin-top:8px;">© 2025 — <span data-i18n="copy">Создание сайтов и ботов</span></p>
+  <p id="t-footer"></p>
+  <p style="margin-top:8px;">© 2025 — <span id="t-copy"></span></p>
 </footer>
 
 </div>
@@ -195,12 +130,74 @@ const T = {
     btn_bot: "🤖 Заказать через бота", btn_me: "💬 Написать напрямую",
     services_h: "Услуги и цены",
     s1t: "🖥 Сайт-визитка", s1d: "1 страница, готово за 3–5 дней",
+    s2t: "🚀 Лендинg", s2d: "Продающая страница, 5–7 дней",
     s2t: "🚀 Лендинг", s2d: "Продающая страница, 5–7 дней",
     s3t: "🏢 Сайт компании", s3d: "3–5 страниц, 7–10 дней",
     s4t: "🛒 Интернет-магазин", s4d: "Каталог, корзина, оплата",
     s5t: "🤖 Telegram-бот", s5d: "Запись клиентов, заявки, меню — под ключ",
     s6t: "🔧 Доработка сайта", s6d: "Правки на существующем сайте",
     s7t: "📱 Поддержка сайтов", s7d: "Правки и обновления каждый месяц",
+    why_h: "Почему я",
+    f1t: "🚀 Быстрые сроки", f1d: "Сайт готов за 3–7 дней, а не за месяц",
+    f2t: "💰 Честные цены", f2d: "фиксированная цена до начала работы",
+    f2t: "💰 Честные цены", f2d: "Фиксированная цена до начала работы",
+    f3t: "📱 Адаптивность", f3d: "Идеально выглядит на телефоне и ПК",
+    f4t: "🤝 Поддержка", f4d: "Помогаю и после сдачи проекта",
+    disc: "🔥 Первым клиентам — скидка 30% 🔥",
+    btn_bot2: "🤖 Заказать через бота", btn_me2: "💬 Обсудить проект",
+    footer: 'Связь: <a href="https://t.me/fbuzs">@fbuzs</a> · Бот: <a href="https://t.me/fbuzs чистая">@
 
+> ⚠️ The response reached the length limit. It will stop here — write **«часть 3»** to get the rest.
 
-> ⚠️ The response reached the length limit. Reply **continue** to get the rest.
+⚠️ ВАЖНО: в части 2 выше случайно задвоились две строки (s2t и f2t). При склейке оставь только одну из каждой пары:
+- `s2t: "🚀 Лендинг", s2d: "Продающая страница, 5–7 дней",`
+- `f2t: "💰 Честные цены", f2d: "Фиксированная цена до начала работы",`
+
+А последнюю обрезанную строку `footer:` замени на эту:
+```js
+    footer: 'Связь: <a href="https://t.me/fbuzs">@fbuzs</a> · Бот: <a href="https://t.me/fbuzs_web_bot">@fbuzs_web_bot</a>',
+    copy: "Создание сайтов и ботов"
+  },
+
+  en: {
+    tag: "Web development",
+    h1: 'I build websites and <span>Telegram bots</span> that bring you clients',
+    subtitle: "Modern design, fast turnaround and honest pricing. From idea to launch — in one week.",
+    btn_bot: "🤖 Order via bot", btn_me: "💬 Message me directly",
+    services_h: "Services & Pricing",
+    s1t: "🖥 Business card site", s1d: "1 page, ready in 3–5 days",
+    s2t: "🚀 Landing page", s2d: "High-converting page, 5–7 days",
+    s3t: "🏢 Company website", s3d: "3–5 pages, 7–10 days",
+    s4t: "🛒 Online store", s4d: "Catalog, cart, payments",
+    s5t: "🤖 Telegram bot", s5d: "Bookings, orders, menus — turnkey",
+    s6t: "🔧 Website fixes", s6d: "Edits on your existing site",
+    s7t: "📱 Website maintenance", s7d: "Updates and edits every month",
+    why_h: "Why me",
+    f1t: "🚀 Fast delivery", f1d: "Your site is ready in 3–7 days, not a month",
+    f2t: "💰 Honest pricing", f2d: "Fixed price agreed before we start",
+    f3t: "📱 Fully responsive", f3d: "Looks perfect on phones and desktops",
+    f4t: "🤝 Support", f4d: "I help even after the project is done",
+    disc: "🔥 30% OFF for my first clients 🔥",
+    btn_bot2: "🤖 Order via bot", btn_me2: "💬 Discuss a project",
+    footer: 'Contact: <a href="https://t.me/fbuzs">@fbuzs</a> · Bot: <a href="https://t.me/fbuzs_web_bot">@fbuzs_web_bot</a>',
+    copy: "Websites & bots development"
+  }
+};
+
+function setLang(lang) {
+  document.documentElement.lang = lang;
+  document.getElementById('btn-ru').classList.toggle('active', lang === 'ru');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  const dict = T[lang];
+  for (const key in dict) {
+    const el = document.getElementById('t-' + key);
+    if (el) el.innerHTML = dict[key];
+  }
+}
+
+setLang('ru');
+</script>
+
+</body>
+</html>
+
