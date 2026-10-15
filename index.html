@@ -3,196 +3,204 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Создание сайтов и Telegram-ботов</title>
+<title>Websites & Telegram Bots | Сайты и Telegram-боты</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
+  :root {
+    --bg: #0b0d0f;
+    --card: #121518;
+    --border: #1f262b;
+    --accent: #2ee6a8;
+    --accent2: #8b7bff;
+    --text: #e8eaed;
+    --muted: #9aa3ab;
+  }
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    background: #0a0a0a;
-    color: #e0e0e0;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    line-height: 1.6;
-    overflow-x: hidden;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+    line-height: 1.7;
   }
 
-  /* Неоновая сетка на фоне */
-  .grid-bg {
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* Язык */
+  .lang-switch {
     position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-image:
-      linear-gradient(rgba(0,255,170,0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,255,170,0.05) 1px, transparent 1px);
-    background-size: 50px 50px;
-    z-index: -1;
+    top: 20px; right: 24px;
+    z-index: 10;
+    display: flex;
+    gap: 4px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 4px;
+  }
+  .lang-switch button {
+    background: transparent;
+    border: none;
+    color: var(--muted);
+    font-family: inherit;
+    font-size: 13px;
+    padding: 6px 12px;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  .lang-switch button.active {
+    background: var(--accent);
+    color: #0b0d0f;
+    font-weight: 600;
   }
 
-  .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
-
-  /* Шапка */
-  header {
-    text-align: center;
-    padding: 80px 20px 50px;
+  header { padding: 110px 0 70px; text-align: left; }
+  .tag {
+    display: inline-block;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 24px;
   }
-
   h1 {
-    font-size: 2.8em;
-    color: #fff;
-    text-shadow:
-      0 0 10px #00ffaa,
-      0 0 30px #00ffaa,
-      0 0 60px #00ffaa;
-    margin-bottom: 15px;
+    font-size: clamp(2.2em, 6vw, 3.4em);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 18px;
   }
+  h1 span { color: var(--accent); }
+  .subtitle { color: var(--muted); font-size: 1.15em; max-width: 520px; margin-bottom: 32px; }
 
-  .subtitle {
-    font-size: 1.3em;
-    color: #00ffaa;
-    text-shadow: 0 0 15px #00ffaa;
-  }
-
-  /* Неоновые кнопки */
   .btn {
     display: inline-block;
-    margin: 15px 10px 0;
-    padding: 15px 35px;
-    border: 2px solid #00ffaa;
-    color: #00ffaa;
+    padding: 14px 32px;
+    border-radius: 12px;
     text-decoration: none;
-    border-radius: 30px;
-    font-size: 1.1em;
-    font-weight: bold;
-    transition: all 0.3s;
-    text-shadow: 0 0 10px #00ffaa;
-    box-shadow: 0 0 15px rgba(0,255,170,0.3), inset 0 0 10px rgba(0,255,170,0.1);
+    font-weight: 600;
+    font-size: 1em;
+    transition: 0.2s;
+    margin-right: 12px;
+    margin-bottom: 12px;
   }
+  .btn-primary { background: var(--accent); color: #0b0d0f; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(46,230,168,0.25); }
+  .btn-ghost { border: 1px solid var(--border); color: var(--text); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
 
-  .btn:hover {
-    background: #00ffaa;
-    color: #0a0a0a;
-    text-shadow: none;
-    box-shadow: 0 0 30px #00ffaa, 0 0 60px rgba(0,255,170,0.5);
-  }
+  section { padding: 70px 0; border-top: 1px solid var(--border); }
+  h2 { font-size: 1.9em; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 36px; }
+  h2::before { content: "— "; color: var(--accent); }
 
-  .btn.purple { border-color: #b026ff; color: #b026ff; text-shadow: 0 0 10px #b026ff; box-shadow: 0 0 15px rgba(176,38,255,0.3); }
-  .btn.purple:hover { background: #b026ff; color: #0a0a0a; text-shadow: none; box-shadow: 0 0 30px #b026ff; }
-
-  /* Секции */
-  section {
-    padding: 50px 20px;
-    border-top: 1px solid rgba(0,255,170,0.2);
-  }
-
-  h2 {
-    font-size: 2em;
-    color: #fff;
-    text-shadow: 0 0 15px #00ffaa;
-    margin-bottom: 30px;
-    text-align: center;
-  }
-
-  /* Карточки услуг */
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-  }
-
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
   .card {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(0,255,170,0.4);
-    border-radius: 15px;
-    padding: 30px 25px;
-    transition: all 0.3s;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    transition: 0.2s;
   }
+  .card:hover { border-color: var(--accent); transform: translateY(-3px); }
+  .card h3 { font-size: 1.1em; font-weight: 600; margin-bottom: 8px; }
+  .desc { color: var(--muted); font-size: 0.92em; }
+  .price { margin-top: 16px; font-size: 1.25em; font-weight: 700; color: var(--accent); }
 
-  .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 25px rgba(0,255,170,0.4);
-    border-color: #00ffaa;
-  }
+  .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+  .feature { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 22px; }
+  .feature b { color: var(--accent2); display: block; margin-bottom: 6px; }
+  .feature span { color: var(--muted); font-size: 0.92em; }
 
-  .card h3 {
-    color: #00ffaa;
-    text-shadow: 0 0 10px #00ffaa;
-    margin-bottom: 10px;
-    font-size: 1.2em;
-  }
-
-  .price {
-    font-size: 1.4em;
-    color: #fff;
-    font-weight: bold;
-    margin-top: 10px;
-  }
-
-  .desc { color: #aaa; font-size: 0.95em; margin-top: 5px; }
-
-  /* Преимущества */
-  .features { text-align: center; }
-  .feature {
-    display: inline-block;
-    margin: 10px 15px;
-    padding: 12px 25px;
-    border: 1px solid #b026ff;
-    border-radius: 30px;
-    color: #b026ff;
-    text-shadow: 0 0 10px #b026ff;
-    box-shadow: 0 0 10px rgba(176,38,255,0.2);
-  }
-
-  /* Скидка */
-  .discount {
+  .banner {
+    background: linear-gradient(135deg, rgba(46,230,168,0.08), rgba(139,123,255,0.08));
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 48px;
     text-align: center;
-    font-size: 1.5em;
-    color: #ff2079;
-    text-shadow: 0 0 20px #ff2079;
-    padding: 30px;
   }
+  .banner p { font-size: 1.4em; font-weight: 600; margin-bottom: 24px; }
+  .banner p b { color: var(--accent); }
 
-  footer {
-    text-align: center;
-    padding: 40px 20px;
-    border-top: 1px solid rgba(0,255,170,0.2);
-    color: #888;
-  }
-
-  footer a { color: #00ffaa; text-decoration: none; text-shadow: 0 0 10px #00ffaa; }
-
-  @media (max-width: 600px) {
-    h1 { font-size: 2em; }
-    .subtitle { font-size: 1em; }
-  }
+  footer { padding: 50px 0; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.95em; }
+  footer a { color: var(--accent); text-decoration: none; }
 </style>
 </head>
 <body>
 
-<div class="grid-bg"></div>
+<div class="lang-switch">
+  <button id="btn-ru" class="active" onclick="setLang('ru')">RU</button>
+  <button id="btn-en" onclick="setLang('en')">EN</button>
+</div>
+
+<div class="container">
 
 <header>
-  <h1>⚡ Создаю сайты и Telegram-ботов ⚡</h1>
-  <p class="subtitle">Современно. Быстро. Недорого.</p>
-  <a href="https://t.me/fbuzs_web_bot" class="btn">🤖 Мой Telegram-бот</a>
-  <a href="https://t.me/fbuzs" class="btn purple">💬 Написать мне</a>
+  <span class="tag" data-i18n="tag">Web development</span>
+  <h1 data-i18n="h1">Создаю сайты и <span>Telegram-ботов</span>, которые приносят клиентов</h1>
+  <p class="subtitle" data-i18n="subtitle">Современный дизайн, быстрые сроки и честные цены. От идеи до запуска — за неделю.</p>
+  <a href="https://t.me/fbuzs_web_bot" class="btn btn-primary" data-i18n="btn_bot">🤖 Заказать через бота</a>
+  <a href="https://t.me/fbuzs" class="btn btn-ghost" data-i18n="btn_me">💬 Написать напрямую</a>
 </header>
 
 <section>
-  <h2>💼 Услуги и цены</h2>
+  <h2 data-i18n="services_h">Услуги и цены</h2>
   <div class="cards">
-    <div class="card">
-      <h3>🖥 Сайт-визитка</h3>
-      <p class="desc">1 страница, готово за 3–5 дней</p>
-      <p class="price">5 000 – 8 000 ₽</p>
-    </div>
-    <div class="card">
-      <h3>🚀 Лендинг</h3>
-      <p class="desc">Продающая страница, 5–7 дней</p>
-      <p class="price">8 000 – 15 000 ₽</p>
-    </div>
-    <div class="card">
-      <h3>🏢 Сайт компании</h3>
-      <p class="desc">3–5 страниц, 7–10 дней</p>
-      <p class="price">15 000 – 25 000 ₽</p>
-    </div>
-    <div class="card">
-      <h3>🛒 Интернет-магазин</h3>
-      <p class="desc">Каталог,
+    <div class="card"><h3 data-i18n="s1t">🖥 Сайт-визитка</h3><p class="desc" data-i18n="s1d">1 страница, готово за 3–5 дней</p><p class="price">5 000 – 8 000 ₽</p></div>
+    <div class="card"><h3 data-i18n="s2t">🚀 Лендинг</h3><p class="desc" data-i18n="s2d">Продающая страница, 5–7 дней</p><p class="price">8 000 – 15 000 ₽</p></div>
+    <div class="card"><h3 data-i18n="s3t">🏢 Сайт компании</h3><p class="desc" data-i18n="s3d">3–5 страниц, 7–10 дней</p><p class="price">15 000 – 25 000 ₽</p></div>
+    <div class="card"><h3 data-i18n="s4t">🛒 Интернет-магазин</h3><p class="desc" data-i18n="s4d">Каталог, корзина, оплата</p><p class="price">от 30 000 ₽</p></div>
+    <div class="card"><h3 data-i18n="s5t">🤖 Telegram-бот</h3><p class="desc" data-i18n="s5d">Запись клиентов, заявки, меню — под ключ</p><p class="price">3 000 – 10 000 ₽</p></div>
+    <div class="card"><h3 data-i18n="s6t">🔧 Доработка сайта</h3><p class="desc" data-i18n="s6d">Правки на существующем сайте</p><p class="price">1 500 – 3 000 ₽</p></div>
+    <div class="card"><h3 data-i18n="s7t">📱 Поддержка сайтов</h3><p class="desc" data-i18n="s7d">Правки и обновления каждый месяц</p><p class="price">2 000 – 3 000 ₽/мес</p></div>
+  </div>
+</section>
+
+<section>
+  <h2 data-i18n="why_h">Почему я</h2>
+  <div class="features">
+    <div class="feature"><b data-i18n="f1t">🚀 Быстрые сроки</b><span data-i18n="f1d">Сайт готов за 3–7 дней, а не за месяц</span></div>
+    <div class="feature"><b data-i18n="f2t">💰 Честные цены</b><span data-i18n="f2d">Фиксированная цена до начала работы</span></div>
+    <div class="feature"><b data-i18n="f3t">📱 Адаптивность</b><span data-i18n="f3d">Идеально выглядит на телефоне и ПК</span></div>
+    <div class="feature"><b data-i18n="f4t">🤝 Поддержка</b><span data-i18n="f4d">Помогаю и после сдачи проекта</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="banner">
+    <p data-i18n="disc">🔥 Первым клиентам — скидка 30% 🔥</p>
+    <a href="https://t.me/fbuzs_web_bot" class="btn btn-primary" data-i18n="btn_bot2">🤖 Заказать через бота</a>
+    <a href="https://t.me/fbuzs" class="btn btn-ghost" data-i18n="btn_me2">💬 Обсудить проект</a>
+  </div>
+</section>
+
+<footer>
+  <p data-i18n="footer">Связь: <a href="https://t.me/fbuzs">@fbuzs</a> · Бот: <a href="https://t.me/fbuzs_web_bot">@fbuzs_web_bot</a></p>
+  <p style="margin-top:8px;">© 2025 — <span data-i18n="copy">Создание сайтов и ботов</span></p>
+</footer>
+
+</div>
+
+<script>
+const T = {
+  ru: {
+    tag: "Веб-разработка",
+    h1: 'Создаю сайты и <span>Telegram-ботов</span>, которые приносят клиентов',
+    subtitle: "Современный дизайн, быстрые сроки и честные цены. От идеи до запуска — за неделю.",
+    btn_bot: "🤖 Заказать через бота", btn_me: "💬 Написать напрямую",
+    services_h: "Услуги и цены",
+    s1t: "🖥 Сайт-визитка", s1d: "1 страница, готово за 3–5 дней",
+    s2t: "🚀 Лендинг", s2d: "Продающая страница, 5–7 дней",
+    s3t: "🏢 Сайт компании", s3d: "3–5 страниц, 7–10 дней",
+    s4t: "🛒 Интернет-магазин", s4d: "Каталог, корзина, оплата",
+    s5t: "🤖 Telegram-бот", s5d: "Запись клиентов, заявки, меню — под ключ",
+    s6t: "🔧 Доработка сайта", s6d: "Правки на существующем сайте",
+    s7t: "📱 Поддержка сайтов", s7d: "Правки и обновления каждый месяц",
+
+
+> ⚠️ The response reached the length limit. Reply **continue** to get the rest.
